@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" style="background:#080808;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NVRSTRSS — Focus. Strength. Balance.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet" /></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,67 +21,64 @@
   --border: rgba(245,245,240,0.1);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: #080808;
+  background-color: #080808;
+}
 
 body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Barlow', sans-serif;
+  background: #080808;
+  background-color: #080808;
+  color: #f5f5f0;
+  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 300;
   overflow-x: hidden;
   cursor: crosshair;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── GRAIN OVERLAY ── */
-body::before {
+/* ── GRAIN ── */
+body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.35;
+  z-index: 9998;
+  opacity: 0.3;
 }
 
 /* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
+  padding: 1.25rem 2rem;
   border-bottom: 1px solid var(--border);
-  background: rgba(8,8,8,0.85);
+  background: rgba(8,8,8,0.97);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  letter-spacing: 0.15em;
-  color: var(--white);
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  color: #f5f5f0;
   text-decoration: none;
-  position: relative;
 }
 
-.nav-logo sup {
-  font-size: 0.55rem;
-  vertical-align: super;
-  letter-spacing: 0;
-  opacity: 0.7;
-}
+.nav-logo sup { font-size: 0.5rem; vertical-align: super; opacity: 0.7; }
 
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 
 .nav-links a {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -89,19 +87,20 @@ nav {
   transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover { color: #f5f5f0; }
 
 .nav-notify {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--black);
-  background: var(--white);
+  color: #080808;
+  background: #f5f5f0;
   padding: 0.5rem 1.2rem;
   text-decoration: none;
   transition: opacity 0.2s;
+  display: inline-block;
 }
 
 .nav-notify:hover { opacity: 0.8; }
@@ -109,59 +108,55 @@ nav {
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
+  background: #080808;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 3rem 5rem;
+  padding: 0 2rem 4rem;
   position: relative;
   overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(255,255,255,0.03) 0%, transparent 70%);
 }
 
 .hero-line {
   position: absolute;
   top: 0; bottom: 0;
   width: 1px;
-  background: var(--border);
+  background: rgba(245,245,240,0.06);
+  pointer-events: none;
 }
+
 .hero-line:nth-child(1) { left: 25%; }
 .hero-line:nth-child(2) { left: 50%; }
 .hero-line:nth-child(3) { left: 75%; }
 
 .hero-eyebrow {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.3s;
 }
 
 .hero-wordmark {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5rem, 16vw, 18rem);
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: clamp(4.5rem, 15vw, 17rem);
   line-height: 0.85;
   letter-spacing: -0.01em;
-  color: var(--white);
-  position: relative;
+  color: #f5f5f0;
   opacity: 0;
   animation: fadeUp 1s ease forwards 0.5s;
 }
 
 .hero-wordmark .cross {
   display: inline-block;
-  font-size: 0.35em;
+  font-size: 0.32em;
   vertical-align: super;
-  margin-left: -0.1em;
-  margin-right: -0.08em;
+  margin-left: -0.08em;
+  margin-right: -0.06em;
   line-height: 1;
 }
 
@@ -169,283 +164,223 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.9s;
 }
 
 .hero-tagline {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gray);
 }
 
-.hero-tagline span {
-  color: var(--white);
-  opacity: 0.4;
-  margin: 0 0.5rem;
-}
+.hero-tagline span { color: #f5f5f0; opacity: 0.4; margin: 0 0.4rem; }
 
 .hero-scroll {
   margin-left: auto;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray);
 }
 
-.hero-scroll-line {
-  width: 3rem;
-  height: 1px;
-  background: var(--gray);
-}
-
-.hero-year {
-  position: absolute;
-  right: 3rem;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: center;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  color: var(--border);
-  white-space: nowrap;
-}
+.hero-scroll-line { width: 2.5rem; height: 1px; background: var(--gray); }
 
 /* ── MANIFESTO ── */
 .manifesto {
-  padding: 8rem 3rem;
+  padding: 6rem 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   border-top: 1px solid var(--border);
   align-items: center;
+  background: #080808;
 }
 
-.manifesto-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
+.section-label {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
 .manifesto-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 6vw, 7rem);
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: clamp(2.8rem, 5.5vw, 6.5rem);
   line-height: 0.9;
-  color: var(--white);
+  color: #f5f5f0;
 }
 
 .manifesto-heading em {
   font-style: normal;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(245,245,240,0.3);
+  -webkit-text-stroke: 1px rgba(245,245,240,0.25);
 }
 
 .manifesto-text {
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.85;
   color: var(--gray);
-  max-width: 42ch;
+  max-width: 44ch;
 }
 
-.manifesto-text strong {
-  color: var(--white);
-  font-weight: 400;
-}
+.manifesto-text strong { color: #f5f5f0; font-weight: 400; }
 
 /* ── PILLARS ── */
 .pillars {
-  padding: 0 3rem 8rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
   border-top: 1px solid var(--border);
+  background: #080808;
 }
 
 .pillar {
-  padding: 4rem 3rem;
+  padding: 3.5rem 2rem;
   border-right: 1px solid var(--border);
   position: relative;
   overflow: hidden;
   transition: background 0.4s;
+  background: #080808;
 }
 
 .pillar:last-child { border-right: none; }
-
 .pillar:hover { background: rgba(255,255,255,0.02); }
 
 .pillar-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: 4.5rem;
   line-height: 1;
-  color: rgba(245,245,240,0.06);
+  color: rgba(245,245,240,0.05);
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 1.5rem;
+  right: 1.5rem;
 }
 
-.pillar-icon {
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 2rem;
-  opacity: 0.6;
-}
+.pillar-icon { width: 1.8rem; height: 1.8rem; opacity: 0.5; color: #f5f5f0; }
 
 .pillar-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.2rem;
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: 2rem;
   letter-spacing: 0.05em;
-  color: var(--white);
-  margin-bottom: 1rem;
+  color: #f5f5f0;
+  margin-bottom: 0.8rem;
+  margin-top: 1rem;
 }
 
-.pillar-desc {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: var(--gray);
-}
+.pillar-desc { font-size: 0.88rem; line-height: 1.7; color: var(--gray); }
 
-/* ── PRODUCT REVEAL ── */
+/* ── PRODUCT ── */
 .product {
-  padding: 8rem 3rem;
+  padding: 6rem 2rem;
   border-top: 1px solid var(--border);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  gap: 5rem;
   align-items: center;
-}
-
-.product-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 2rem;
+  background: #080808;
 }
 
 .product-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 5vw, 6rem);
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: clamp(2.8rem, 4.5vw, 5.5rem);
   line-height: 0.9;
-  color: var(--white);
-  margin-bottom: 1.5rem;
+  color: #f5f5f0;
+  margin-bottom: 1.2rem;
 }
 
 .product-subtitle {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.8rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .product-desc {
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 0.92rem;
+  line-height: 1.85;
   color: var(--gray);
-  margin-bottom: 3rem;
-  max-width: 42ch;
+  margin-bottom: 2.5rem;
+  max-width: 44ch;
 }
 
-.ingredient-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 3rem;
-}
+.ingredient-list { list-style: none; margin-bottom: 2.5rem; }
 
 .ingredient-list li {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gray);
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(245,245,240,0.08);
 }
 
-.ingredient-list li::before {
-  content: '+';
-  color: var(--white);
-  font-size: 1rem;
-  line-height: 1;
-}
+.ingredient-list li::before { content: '+'; color: #f5f5f0; font-size: 1rem; flex-shrink: 0; }
 
-.cta-group {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
+.cta-group { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
 
 .btn-primary {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  background: var(--white);
-  color: var(--black);
-  padding: 1rem 2.5rem;
+  background: #f5f5f0;
+  color: #080808;
+  padding: 0.9rem 2rem;
   text-decoration: none;
   transition: opacity 0.2s;
   cursor: pointer;
   border: none;
+  display: inline-block;
 }
 
 .btn-primary:hover { opacity: 0.85; }
 
 .btn-ghost {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   background: transparent;
   color: var(--gray);
-  padding: 1rem 2rem;
+  padding: 0.9rem 1.8rem;
   text-decoration: none;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(245,245,240,0.15);
   transition: color 0.2s, border-color 0.2s;
   cursor: pointer;
+  display: inline-block;
 }
 
-.btn-ghost:hover { color: var(--white); border-color: rgba(245,245,240,0.3); }
+.btn-ghost:hover { color: #f5f5f0; border-color: rgba(245,245,240,0.3); }
 
-.product-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.product-visual { display: flex; align-items: center; justify-content: center; }
 
 .bottle-mockup {
   width: 100%;
-  max-width: 380px;
+  max-width: 360px;
   aspect-ratio: 1;
-  background: var(--off-black);
+  background: #111111;
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -458,66 +393,61 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 40% 30%, rgba(255,255,255,0.05) 0%, transparent 60%);
+  background: radial-gradient(circle at 40% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.bottle-inner {
-  text-align: center;
-}
+.bottle-inner { text-align: center; position: relative; z-index: 1; }
 
 .bottle-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.8rem;
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: 2.6rem;
   letter-spacing: 0.05em;
-  color: var(--white);
+  color: #f5f5f0;
   line-height: 1;
 }
 
+.bottle-line { width: 3.5rem; height: 1px; background: rgba(245,245,240,0.15); margin: 0.6rem auto; }
+
 .bottle-sub {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.55rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.52rem;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-top: 0.5rem;
-}
-
-.bottle-line {
-  width: 4rem;
-  height: 1px;
-  background: var(--border);
-  margin: 0.75rem auto;
 }
 
 .bottle-caps {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(245,245,240,0.3);
+  color: rgba(245,245,240,0.25);
+  margin-top: 1.2rem;
 }
 
 .bottle-corner {
   position: absolute;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.55rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.5rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245,245,240,0.15);
+  color: rgba(245,245,240,0.12);
+  z-index: 1;
 }
 
-.bottle-corner.tl { top: 1.5rem; left: 1.5rem; }
-.bottle-corner.br { bottom: 1.5rem; right: 1.5rem; text-align: right; }
+.bottle-corner.tl { top: 1.2rem; left: 1.2rem; }
+.bottle-corner.br { bottom: 1.2rem; right: 1.2rem; text-align: right; }
 
-/* ── NOTIFY SECTION ── */
+/* ── NOTIFY ── */
 .notify {
-  padding: 8rem 3rem;
+  padding: 6rem 2rem;
   border-top: 1px solid var(--border);
   text-align: center;
-  background: var(--off-black);
+  background: #111111;
   position: relative;
   overflow: hidden;
 }
@@ -525,89 +455,80 @@ nav {
 .notify::before {
   content: 'NVRSTRSS';
   position: absolute;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22vw;
-  color: rgba(245,245,240,0.02);
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  font-size: 20vw;
+  color: rgba(245,245,240,0.018);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
   pointer-events: none;
+  z-index: 0;
 }
 
-.notify-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 2rem;
-}
+.notify > * { position: relative; z-index: 1; }
 
 .notify-heading {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
   font-size: clamp(2.5rem, 5vw, 6rem);
   line-height: 0.9;
-  color: var(--white);
-  margin-bottom: 1.5rem;
+  color: #f5f5f0;
+  margin-bottom: 1.2rem;
 }
 
 .notify-sub {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--gray);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   max-width: 40ch;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-.notify-form {
-  display: flex;
-  gap: 0;
-  max-width: 420px;
-  margin: 0 auto;
-}
+.notify-form { display: flex; max-width: 400px; margin: 0 auto; }
 
 .notify-input {
   flex: 1;
   background: transparent;
   border: 1px solid rgba(245,245,240,0.2);
   border-right: none;
-  color: var(--white);
-  font-family: 'Barlow', sans-serif;
+  color: #f5f5f0;
+  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
   font-size: 0.85rem;
   font-weight: 300;
-  padding: 1rem 1.5rem;
+  padding: 0.9rem 1.2rem;
   outline: none;
   transition: border-color 0.2s;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
 .notify-input::placeholder { color: rgba(245,245,240,0.25); }
 .notify-input:focus { border-color: rgba(245,245,240,0.4); }
 
 .notify-btn {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  background: var(--white);
-  color: var(--black);
-  padding: 1rem 2rem;
+  background: #f5f5f0;
+  color: #080808;
+  padding: 0.9rem 1.8rem;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s;
   white-space: nowrap;
+  border-radius: 0;
 }
 
 .notify-btn:hover { opacity: 0.85; }
 
 .notify-confirm {
   display: none;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -617,21 +538,19 @@ nav {
 
 /* ── SOCIAL BAR ── */
 .social-bar {
-  padding: 3rem;
+  padding: 2.5rem 2rem;
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #080808;
 }
 
-.social-links {
-  display: flex;
-  gap: 2rem;
-}
+.social-links { display: flex; gap: 2rem; }
 
 .social-links a {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -640,38 +559,39 @@ nav {
   transition: color 0.2s;
 }
 
-.social-links a:hover { color: var(--white); }
+.social-links a:hover { color: #f5f5f0; }
 
 .social-tagline {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(245,245,240,0.2);
+  color: rgba(245,245,240,0.18);
 }
 
 /* ── FOOTER ── */
 footer {
-  padding: 2rem 3rem;
+  padding: 1.8rem 2rem;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #080808;
 }
 
 .footer-copy {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(245,245,240,0.2);
+  color: rgba(245,245,240,0.18);
 }
 
 .footer-faith {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.6rem;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -680,38 +600,34 @@ footer {
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(2rem); }
+  from { opacity: 0; transform: translateY(1.5rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(1.5rem);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(1.2rem);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
+.reveal.visible { opacity: 1; transform: none; }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
-  nav { padding: 1.25rem 1.5rem; }
+  nav { padding: 1rem 1.25rem; }
   .nav-links { display: none; }
-  .hero { padding: 0 1.5rem 4rem; }
-  .manifesto { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem; }
-  .pillars { grid-template-columns: 1fr; padding: 0 1.5rem 5rem; }
-  .pillar { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+  .hero { padding: 0 1.25rem 3.5rem; }
+  .manifesto { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.25rem; }
+  .pillars { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.25rem; }
   .pillar:last-child { border-bottom: none; }
-  .product { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+  .product { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.25rem; }
   .product-visual { order: -1; }
-  .notify { padding: 5rem 1.5rem; }
+  .notify { padding: 4rem 1.25rem; }
   .notify-form { flex-direction: column; }
   .notify-input { border-right: 1px solid rgba(245,245,240,0.2); border-bottom: none; }
-  .social-bar { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; }
-  footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
-  .hero-year { display: none; }
+  .social-bar { flex-direction: column; gap: 1.2rem; padding: 2rem 1.25rem; text-align: center; }
+  footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 1.5rem; }
 }
 ```
 
@@ -719,73 +635,47 @@ footer {
 </head>
 <body>
 
-  <!-- NAV -->
-
   <nav>
     <a href="#" class="nav-logo">NVRSTR<sup>+</sup>SS</a>
     <ul class="nav-links">
       <li><a href="#product">Product</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#notify">Follow</a></li>
+      <li><a href="#notify">Notify Me</a></li>
     </ul>
     <a href="#notify" class="nav-notify">Get Notified</a>
   </nav>
 
-  <!-- HERO -->
-
   <section class="hero">
-    <div class="hero-bg"></div>
     <div class="hero-line"></div>
     <div class="hero-line"></div>
     <div class="hero-line"></div>
-    <div class="hero-year">EST. 2024 — NVRSTRSS.COM</div>
-
-```
-<p class="hero-eyebrow">Dietary Supplement — Coming Soon</p>
-<h1 class="hero-wordmark">NVRSTR<span class="cross">+</span>SS</h1>
-<div class="hero-sub">
-  <p class="hero-tagline">
-    Focus <span>+</span> Strength <span>+</span> Balance
-  </p>
-  <div class="hero-scroll">
-    <span class="hero-scroll-line"></span>
-    Scroll
-  </div>
-</div>
-```
-
+    <p class="hero-eyebrow">Dietary Supplement — Coming Soon</p>
+    <h1 class="hero-wordmark">NVRSTR<span class="cross">+</span>SS</h1>
+    <div class="hero-sub">
+      <p class="hero-tagline">Focus <span>+</span> Strength <span>+</span> Balance</p>
+      <div class="hero-scroll"><span class="hero-scroll-line"></span>Scroll</div>
+    </div>
   </section>
-
-  <!-- MANIFESTO -->
 
   <section class="manifesto" id="about">
     <div class="reveal">
-      <p class="manifesto-label">The Philosophy</p>
-      <h2 class="manifesto-heading">
-        REMOVE<br>
-        WHAT'S<br>
-        <em>STEALING</em><br>
-        YOUR ENERGY
-      </h2>
+      <p class="section-label">The Philosophy</p>
+      <h2 class="manifesto-heading">REMOVE<br>WHAT'S<br><em>STEALING</em><br>YOUR ENERGY</h2>
     </div>
     <div class="reveal">
       <p class="manifesto-text">
         Most supplements add noise. We remove it.<br><br>
-        <strong>NVRSTRSS</strong> is built for people who already do the work — who already show up, stay focused, and push through. Not because they need a stimulant to get started, but because they respect what they put in their body.<br><br>
-        No caffeine. No shortcuts. Just four clinically-studied ingredients doing exactly what they're supposed to do: help your mind and body stay in control, no matter what's in front of you.
+        <strong>NVRSTRSS</strong> is built for people who already do the work — who show up, stay focused, and push through. Not because they need a stimulant, but because they respect what they put in their body.<br><br>
+        No caffeine. No shortcuts. Just four clinically-studied ingredients helping your mind and body stay in control, no matter what's in front of you.
       </p>
     </div>
   </section>
-
-  <!-- PILLARS -->
 
   <section class="pillars">
     <div class="pillar reveal">
       <span class="pillar-num">01</span>
       <svg class="pillar-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="16" cy="16" r="12"/>
-        <line x1="16" y1="4" x2="16" y2="28"/>
-        <line x1="4" y1="16" x2="28" y2="16"/>
+        <circle cx="16" cy="16" r="12"/><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/>
       </svg>
       <h3 class="pillar-title">Faith. Discipline. Purpose.</h3>
       <p class="pillar-desc">Built on the belief that mental strength is the foundation of everything. The cross isn't decoration — it's the anchor.</p>
@@ -793,8 +683,7 @@ footer {
     <div class="pillar reveal">
       <span class="pillar-num">02</span>
       <svg class="pillar-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M4 28 L16 4 L28 28"/>
-        <line x1="8" y1="20" x2="24" y2="20"/>
+        <path d="M4 28 L16 4 L28 28"/><line x1="8" y1="20" x2="24" y2="20"/>
       </svg>
       <h3 class="pillar-title">No Stimulants.</h3>
       <p class="pillar-desc">Zero caffeine. Zero jitter. Zero crash. Clean energy management that works with your biology, not against it.</p>
@@ -802,25 +691,21 @@ footer {
     <div class="pillar reveal">
       <span class="pillar-num">03</span>
       <svg class="pillar-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="6" y="6" width="20" height="20" rx="1"/>
-        <line x1="6" y1="16" x2="26" y2="16"/>
-        <line x1="16" y1="6" x2="16" y2="26"/>
+        <rect x="6" y="6" width="20" height="20" rx="1"/><line x1="6" y1="16" x2="26" y2="16"/><line x1="16" y1="6" x2="16" y2="26"/>
       </svg>
       <h3 class="pillar-title">4 Ingredients. That's It.</h3>
       <p class="pillar-desc">KSM-66. Rhodiola. L-Theanine. B12. Nothing hidden. Nothing unnecessary. Every ingredient earns its place.</p>
     </div>
   </section>
 
-  <!-- PRODUCT -->
-
   <section class="product" id="product">
     <div class="reveal">
-      <p class="product-label">The Formula — V1</p>
+      <p class="section-label">The Formula — V1</p>
       <h2 class="product-name">60 CAPS<br>30 SERVINGS</h2>
       <p class="product-subtitle">Focus + Strength + Balance</p>
       <p class="product-desc">Two capsules. Once daily. Formulated with the four most research-backed adaptogens and neuronutrients for stress resilience and cognitive clarity.</p>
       <ul class="ingredient-list">
-        <li>KSM-66 Ashwagandha — Stress & Cortisol</li>
+        <li>KSM-66 Ashwagandha — Stress &amp; Cortisol</li>
         <li>Rhodiola Rosea — Fatigue Resistance</li>
         <li>L-Theanine — Calm Focus</li>
         <li>Methylcobalamin B12 — Cellular Energy</li>
@@ -838,26 +723,22 @@ footer {
           <div class="bottle-name">NVRSTR+SS</div>
           <div class="bottle-line"></div>
           <div class="bottle-sub">Focus · Strength · Balance</div>
-          <div class="bottle-caps" style="margin-top:1.5rem;">60 Capsules · 30 Servings</div>
+          <div class="bottle-caps">60 Capsules · 30 Servings</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NOTIFY -->
-
   <section class="notify" id="notify">
-    <p class="notify-label">Launch Notification</p>
+    <p class="section-label">Launch Notification</p>
     <h2 class="notify-heading">BE THE<br>FIRST.</h2>
     <p class="notify-sub">NVRSTRSS launches soon. Drop your email and you'll be the first to know — plus first access when we go live.</p>
     <div class="notify-form">
       <input type="email" class="notify-input" placeholder="your@email.com" id="emailInput" />
       <button class="notify-btn" onclick="handleNotify()">Notify Me</button>
     </div>
-    <p class="notify-confirm" id="notifyConfirm">✓ &nbsp;You're on the list.</p>
+    <p class="notify-confirm" id="notifyConfirm">&#10003; &nbsp;You're on the list.</p>
   </section>
-
-  <!-- SOCIAL BAR -->
 
   <div class="social-bar">
     <div class="social-links">
@@ -868,33 +749,29 @@ footer {
     <p class="social-tagline">@nvrstrss.official</p>
   </div>
 
-  <!-- FOOTER -->
-
   <footer>
-    <p class="footer-copy">© 2024 NVRSTRSS. All Rights Reserved.</p>
+    <p class="footer-copy">&copy; 2025 NVRSTRSS. All Rights Reserved.</p>
     <p class="footer-faith">Faith. Discipline. Purpose.</p>
   </footer>
 
   <script>
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     reveals.forEach(el => observer.observe(el));
 
-    // Notify form
     function handleNotify() {
       const input = document.getElementById('emailInput');
       const confirm = document.getElementById('notifyConfirm');
       if (input.value && input.value.includes('@')) {
         confirm.style.display = 'block';
         input.value = '';
-        input.placeholder = 'You\'re on the list.';
+        input.placeholder = "You're on the list.";
         input.disabled = true;
       }
     }
